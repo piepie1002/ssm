@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pie.ssm.mapper.CartsMapper">
+    <!--mybatis里  resultMap来映射  PO -->
+    <resultMap id="BaseResultMap" type="Carts">
+        <!--   对应数据的ID-->
+        <id property="cartsId" column="carts_id"/>
+        <result property="quantity" column="quantity"/>
+        <result property="productId" column="product_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="status" column="status"/>
+    </resultMap>
+    <sql id="Base_Column_list">
+    carts_id,
+    quantity,
+    product_id,
+    user_id,
+    `status`
+    </sql>
+    <insert id="insert">
+        insert into 
+        carts (quantity,product_id,user_id)
+        values (#{carts.quantity},#{carts.productId},#{carts.userId});
+    </insert>
+    <select id="selectByUserIdAndProductId" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_list"/>
+        from carts
+        where user_id = #{userId}
+        and product_id = #{productId}
+        and status = 0;
+    </select>
+    <update id="update">
+    
+    
+    </update>
+    <update id="updateById">
+        update carts 
+        set quantity = #{quantity}
+        where carts_id = #{cartsId}
+        and status = 0;
+    </update>
+    <select id="selectList" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_list"/>
+        from carts
+        where user_id = #{uid}
+        and status = 0;
+    </select>
+      
+</mapper>
