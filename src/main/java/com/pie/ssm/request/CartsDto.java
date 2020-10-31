@@ -10,7 +10,7 @@ import lombok.Data;
  */
 @Data
 public class CartsDto {
-    private Integer uId;
+    private Integer userId;
     private Integer quantity;
     private Integer productId;
     

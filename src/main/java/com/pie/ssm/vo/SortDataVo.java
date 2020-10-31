@@ -9,8 +9,7 @@ import java.util.List;
  * @since JDK 1.8
  */
 @Data
-public class ListDataVo {
+public class SortDataVo {
     
-    private List<CartsVo>cartsVoList;
-    
+    private List<BrandVo> brandVos;
 }

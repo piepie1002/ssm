@@ -33,7 +33,10 @@
         and status = 0;
     </select>
     <update id="update">
-    
+        update carts
+        set quantity = 0,
+        status = 1
+        where carts_id=#{carts.cartsId}
     
     </update>
     <update id="updateById">
@@ -49,5 +52,19 @@
         where user_id = #{uid}
         and status = 0;
     </select>
+    <select id="selectCartsStatus" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_list"/>
+        from carts
+        where user_id = #{userId}
+        and product_id = #{productId}
+        and status = 1; 
+    </select>
+    <update id="updateStatus">
+        update carts
+        set quantity=#{carts.quantity},
+        status =#{carts.status}
+        where carts_id=#{carts.cartsId}
+    </update>
       
 </mapper>

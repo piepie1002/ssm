@@ -12,8 +12,11 @@ import javax.annotation.Resource;
  * @author LIN
  * @since JDK 1.8
  */
-/*购物车
-* 添加购物车
+/* 购物车
+* 1.添加购物车
+* 2.查看购物车
+* 3.删除购物车
+* 4.修改商品数量
 * */
 @RestController
 @RequestMapping("/carts")
@@ -54,5 +57,28 @@ public class CartsController {
             return ResponseEntity.error();
         }
     }
-    
+
+    /**
+     *  删除购物车
+     * @param cartsDto
+     * @return
+     */
+    @PutMapping("/del")
+    public ResponseEntity<ListDataVo> del(CartsDto cartsDto){
+        try {
+            ListDataVo listDataVo = cartsService.deleteCarts(cartsDto);
+            return ResponseEntity.success(listDataVo);
+        }catch (Exception e){
+            return ResponseEntity.error();
+        }
+    }
+    @PutMapping("/update")
+    public ResponseEntity<ListDataVo> updateQuantity(CartsDto cartsDto){
+        try {
+            ListDataVo listDataVo = cartsService.updateQuantity(cartsDto);
+            return ResponseEntity.success(listDataVo);
+        }catch (Exception e){
+            return ResponseEntity.error();
+        }
+    }
 }

@@ -13,4 +13,8 @@ public interface CartsService {
     int saveCarts(CartsDto cartsDto);
     
     ListDataVo findAllCarts(int uId);
+    
+    ListDataVo deleteCarts(CartsDto cartsDto);
+    
+    ListDataVo updateQuantity(CartsDto cartsDto);
 }

@@ -29,4 +29,8 @@ public interface CartsMapper {
     int update(@Param("carts") Carts carts);
     int updateById(@Param("cartsId") int cartsId, @Param("quantity") int quantity);
     List<Carts> selectList(@Param("uid") int uid);
+
+    Carts selectCartsStatus(@Param("userId") Integer userId,@Param("productId") Integer productId);
+
+    int updateStatus(@Param("carts") Carts carts);
 }
